@@ -4,17 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0F0A0A"
+    android:background="#000522"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movieRV"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/bannerIV" />
+
+    <ImageView
+        android:id="@+id/bannerIV"
+        android:layout_width="401dp"
+        android:layout_height="190dp"
+        android:adjustViewBounds="false"
+        android:background="#009C0000"
+        android:cropToPadding="false"
+        android:foregroundGravity="fill_horizontal|fill"
+        android:foregroundTint="#00000000"
+        android:foregroundTintMode="add"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_banner_background"
+        tools:srcCompat="@mipmap/ic_banner_background" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

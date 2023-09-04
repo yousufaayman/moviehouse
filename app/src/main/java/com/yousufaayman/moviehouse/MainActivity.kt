@@ -1,7 +1,5 @@
 package com.yousufaayman.moviehouse
 
-import android.graphics.drawable.ColorDrawable
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,34 +12,42 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var movieAdapter: adapter
     private lateinit var movieRecyclerView: RecyclerView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        //~Setting Up Main Activity~
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //~Setting Adapter~
         movieRecyclerView = findViewById(R.id.movieRV)
         movieRecyclerView.layoutManager = LinearLayoutManager(this)
         movieAdapter = adapter()
-
         movieRecyclerView.adapter = movieAdapter
 
-        // Add this code after setting up the adapter
+
+        //~Extra Functionality~
+        //Scroll Listener
+        val scrollListener = ScrollListener(findViewById(R.id.bannerIV), this)
+        movieRecyclerView.addOnScrollListener(scrollListener)
+
+        //Dividers
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         dividerItemDecoration.setDrawable(
-            ResourcesCompat.getDrawable(resources, android.R.color.white, theme)!!)
+            ResourcesCompat.getDrawable(resources, android.R.color.white, theme)!!
+        )
         val horizontalMarginInPixels = resources.getDimensionPixelSize(R.dimen.horizontal_margin)
 
-// Add horizontal dividers
+        // Add horizontal dividers
         movieRecyclerView.addItemDecoration(dividerItemDecoration)
 
-// Add padding between items
+        // Add padding between items
         movieRecyclerView.setPadding(horizontalMarginInPixels, 0, horizontalMarginInPixels, 0)
         movieRecyclerView.clipToPadding = false
 
+
+        //~API Call~
         val apiKey = "eafb61ad65af02dc924e6864218f9e88"
         val apiService = TMDBApiClient.create()
 
@@ -60,5 +66,7 @@ class MainActivity : AppCompatActivity() {
                 Log.e("API Request Failed", t.message ?: "Unknown error")
             }
         })
+
+
     }
 }
