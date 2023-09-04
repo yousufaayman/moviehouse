@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 
 class adapter : ListAdapter<movieModelClass, adapter.MovieViewHolder>(MovieDiffCallback()) {
 
@@ -28,12 +28,10 @@ class adapter : ListAdapter<movieModelClass, adapter.MovieViewHolder>(MovieDiffC
         private val movieTitleTextView: TextView = itemView.findViewById(R.id.nameTV)
         private val movieReleaseDateTextView: TextView = itemView.findViewById(R.id.releaseDate)
 
-        val radius = itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
         fun bind(movie: movieModelClass) {
             Glide.with(itemView.context)
                 .load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
-//                .transform(RoundedCorners(radius))
-                .transition(DrawableTransitionOptions.withCrossFade())
+                .transition(DrawableTransitionOptions.withCrossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()))
                 .into(moviePosterImageView)
 
             movieTitleTextView.text = movie.title

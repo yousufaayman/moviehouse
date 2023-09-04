@@ -3,7 +3,7 @@ package com.yousufaayman.moviehouse
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.content.res.ResourcesCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,17 +32,15 @@ class MainActivity : AppCompatActivity() {
         val scrollListener = ScrollListener(findViewById(R.id.bannerIV), this)
         movieRecyclerView.addOnScrollListener(scrollListener)
 
-        //Dividers
+        //Add Dividers
+        val customDivider = ContextCompat.getDrawable(this, R.drawable.custom_divider)
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
-        dividerItemDecoration.setDrawable(
-            ResourcesCompat.getDrawable(resources, android.R.color.white, theme)!!
-        )
-        val horizontalMarginInPixels = resources.getDimensionPixelSize(R.dimen.horizontal_margin)
+        dividerItemDecoration.setDrawable(customDivider!!)
 
-        // Add horizontal dividers
         movieRecyclerView.addItemDecoration(dividerItemDecoration)
 
-        // Add padding between items
+        //Add padding between items
+        val horizontalMarginInPixels = resources.getDimensionPixelSize(R.dimen.horizontal_margin)
         movieRecyclerView.setPadding(horizontalMarginInPixels, 0, horizontalMarginInPixels, 0)
         movieRecyclerView.clipToPadding = false
 
@@ -58,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     val movies = movieResponse?.results ?: emptyList()
                     movieAdapter.submitList(movies)
                 } else {
-                    // Handle API error here (e.g., display an error message)
+                    Log.e("API ERROR", "Couldn't Complete Request")
                 }
             }
 
