@@ -12,7 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var movieAdapter: adapter
+    private lateinit var movieRecycleViewAdaptor: RecycleViewAdaptor
     private lateinit var movieRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         //~Setting Adapter~
         movieRecyclerView = findViewById(R.id.movieRV)
         movieRecyclerView.layoutManager = LinearLayoutManager(this)
-        movieAdapter = adapter()
-        movieRecyclerView.adapter = movieAdapter
+        movieRecycleViewAdaptor = RecycleViewAdaptor()
+        movieRecyclerView.adapter = movieRecycleViewAdaptor
 
 
         //~Extra Functionality~
@@ -48,13 +48,12 @@ class MainActivity : AppCompatActivity() {
         //~API Call~
         val apiKey = "eafb61ad65af02dc924e6864218f9e88"
         val apiService = TMDBApiClient.create()
-
         apiService.getPopularMovies(apiKey, 1).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
                     val movieResponse = response.body()
                     val movies = movieResponse?.results ?: emptyList()
-                    movieAdapter.submitList(movies)
+                    movieRecycleViewAdaptor.submitList(movies)
                 } else {
                     Log.e("API ERROR", "Couldn't Complete Request")
                 }

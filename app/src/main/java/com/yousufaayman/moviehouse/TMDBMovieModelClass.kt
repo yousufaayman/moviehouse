@@ -1,6 +1,6 @@
 package com.yousufaayman.moviehouse
 
-data class movieModelClass(
+data class TMDBMovieModelClass(
 
     val id: Int? = null,
     val title : String,

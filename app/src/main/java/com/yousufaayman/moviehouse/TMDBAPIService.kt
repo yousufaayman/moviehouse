@@ -7,9 +7,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 data class MovieResponse(
-    val results: List<movieModelClass>
+    val results: List<TMDBMovieModelClass>
 )
-
 interface TMDBApiService {
     @GET("movie/popular")
     fun getPopularMovies(
@@ -17,7 +16,6 @@ interface TMDBApiService {
         @Query("page") page: Int
     ): Call<MovieResponse>
 }
-
 object TMDBApiClient {
     private const val BASE_URL = "https://api.themoviedb.org/3/"
 

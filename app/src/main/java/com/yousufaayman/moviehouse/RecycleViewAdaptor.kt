@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 
-class adapter : ListAdapter<movieModelClass, adapter.MovieViewHolder>(MovieDiffCallback()) {
+class RecycleViewAdaptor : ListAdapter<TMDBMovieModelClass, RecycleViewAdaptor.MovieViewHolder>(MovieDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
@@ -28,7 +28,7 @@ class adapter : ListAdapter<movieModelClass, adapter.MovieViewHolder>(MovieDiffC
         private val movieTitleTextView: TextView = itemView.findViewById(R.id.nameTV)
         private val movieReleaseDateTextView: TextView = itemView.findViewById(R.id.releaseDate)
 
-        fun bind(movie: movieModelClass) {
+        fun bind(movie: TMDBMovieModelClass) {
             Glide.with(itemView.context)
                 .load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
                 .transition(DrawableTransitionOptions.withCrossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()))
@@ -41,12 +41,12 @@ class adapter : ListAdapter<movieModelClass, adapter.MovieViewHolder>(MovieDiffC
         }
 
     }
-private class MovieDiffCallback : DiffUtil.ItemCallback<movieModelClass>() {
-        override fun areItemsTheSame(oldItem: movieModelClass, newItem: movieModelClass): Boolean {
+private class MovieDiffCallback : DiffUtil.ItemCallback<TMDBMovieModelClass>() {
+        override fun areItemsTheSame(oldItem: TMDBMovieModelClass, newItem: TMDBMovieModelClass): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: movieModelClass, newItem: movieModelClass): Boolean {
+        override fun areContentsTheSame(oldItem: TMDBMovieModelClass, newItem: TMDBMovieModelClass): Boolean {
             return oldItem == newItem
         }
     }
