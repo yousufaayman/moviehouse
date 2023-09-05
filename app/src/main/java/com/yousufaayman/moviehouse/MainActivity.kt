@@ -14,21 +14,24 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     private lateinit var movieRecycleViewAdaptor: RecycleViewAdaptor
     private lateinit var movieRecyclerView: RecyclerView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         //~Setting Up Main Activity~
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //~Setting Adapter~
+        //Setting Adapter
         movieRecyclerView = findViewById(R.id.movieRV)
         movieRecyclerView.layoutManager = LinearLayoutManager(this)
-        movieRecycleViewAdaptor = RecycleViewAdaptor()
+        movieRecycleViewAdaptor = RecycleViewAdaptor(supportFragmentManager, this)
         movieRecyclerView.adapter = movieRecycleViewAdaptor
 
+        //Adding Styling to Recycler View
+        recycleViewStyle(movieRecyclerView)
 
-        //~Extra Functionality~
-        //Scroll Listener
+        //Calling APIS
+        ApiCall(movieRecycleViewAdaptor)
+    }
+    private fun recycleViewStyle(targetRecycleView: RecyclerView){
         val scrollListener = ScrollListener(findViewById(R.id.bannerIV), this)
         movieRecyclerView.addOnScrollListener(scrollListener)
 
@@ -44,8 +47,8 @@ class MainActivity : AppCompatActivity() {
         movieRecyclerView.setPadding(horizontalMarginInPixels, 0, horizontalMarginInPixels, 0)
         movieRecyclerView.clipToPadding = false
 
-
-        //~API Call~
+    }
+    private fun ApiCall(RecycleViewAdapt: RecycleViewAdaptor){
         val apiKey = "eafb61ad65af02dc924e6864218f9e88"
         val apiService = TMDBApiClient.create()
         apiService.getPopularMovies(apiKey, 1).enqueue(object : Callback<MovieResponse> {
@@ -53,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val movieResponse = response.body()
                     val movies = movieResponse?.results ?: emptyList()
-                    movieRecycleViewAdaptor.submitList(movies)
+                    RecycleViewAdapt.submitList(movies)
                 } else {
                     Log.e("API ERROR", "Couldn't Complete Request")
                 }
@@ -63,7 +66,5 @@ class MainActivity : AppCompatActivity() {
                 Log.e("API Request Failed", t.message ?: "Unknown error")
             }
         })
-
-
     }
 }

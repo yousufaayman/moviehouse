@@ -15,6 +15,10 @@ interface TMDBApiService {
         @Query("api_key") apiKey: String,
         @Query("page") page: Int
     ): Call<MovieResponse>
+    fun getMovieInfo(
+        @Query("api_key") apiKey: String,
+        @Query("page") page: Int
+    ): Call<MovieResponse>
 }
 object TMDBApiClient {
     private const val BASE_URL = "https://api.themoviedb.org/3/"

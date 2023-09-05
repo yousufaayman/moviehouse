@@ -1,6 +1,6 @@
 package com.yousufaayman.moviehouse
 
-import retrofit2.Response
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -8,14 +8,14 @@ import retrofit2.http.Query
 
 interface OMDBApiService {
     @GET("/")
-    suspend fun getMovieInfo(
+    fun getMovieInfo(
         @Query("apikey") apiKey: String,
         @Query("t") movieTitle: String
-    ): Response<OMDBMovieModelClass>
+    ): Call<OMDBMovieModelClass>
 }
 
 object OMDBApiClient {
-    private const val BASE_URL = "http://www.omdbapi.com/"
+    private const val BASE_URL = "https://www.omdbapi.com/"
 
     fun create(): OMDBApiService {
         val retrofit = Retrofit.Builder()
