@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Movie House</string>
+    <string name="banner_image_for_application">Banner Image For Application</string>
+    <string name="trending">Trending</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="director">Director</string>
+    <string name="movie_psoter">Movie Psoter</string>
+    <string name="release">release</string>
+    <string name="rating">Rating</string>
+    <string name="rated">RATED</string>
+    <string name="genre">genre</string>
+    <string name="plot">plot</string>
+    <string name="actors">Actors ::</string>
+    <string name="plott">Plot ::</string>
+    <string name="actorss">Actors</string>
+    <string name="runtime">Runtime</string>
+    <string name="textview">TextView</string>
 </resources>

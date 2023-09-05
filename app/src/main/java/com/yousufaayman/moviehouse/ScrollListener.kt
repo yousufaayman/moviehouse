@@ -6,8 +6,10 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ScrollListener(itemView: View, mContext: Context) : RecyclerView.OnScrollListener() {
+
+class ScrollListener(itemView: View, mContext: Context, private val fabScrollToTop: FloatingActionButton) : RecyclerView.OnScrollListener() {
 
     private val bannerImageView: ImageView = itemView.findViewById(R.id.bannerIV)
     private val fadeInAnimationTo50: Animation = AnimationUtils.loadAnimation(mContext, R.anim.fade_in)
@@ -67,5 +69,12 @@ class ScrollListener(itemView: View, mContext: Context) : RecyclerView.OnScrollL
             bannerImageView.startAnimation(fadeOutAnimation)
             isBannerVisible = false
         }
+
+        if (dy > 0) {
+            fabScrollToTop.hide()
+        } else {
+            fabScrollToTop.show()
+        }
     }
 }
+

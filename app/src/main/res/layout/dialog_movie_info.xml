@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="serif-monospace"
-        android:text="Movie Title"
+        android:text="@string/movie_title"
         android:textAlignment="center"
         android:textColor="#007CDF"
         android:textSize="46sp"
@@ -22,7 +22,7 @@
         android:id="@+id/movieDirectorTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Director"
+        android:text="@string/director"
         android:textAlignment="center"
         android:textColor="#007CDF"
         android:textSize="28sp"
@@ -33,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
-        android:maxHeight="50dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
@@ -47,7 +46,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="sans-serif-black"
-            android:text="release"
+            android:text="@string/release"
             android:textAlignment="center"
             android:textColor="#000E87"
             android:textSize="16sp" />
@@ -58,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-black"
-            android:text="genre"
+            android:text="@string/genre"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#000E87"
@@ -71,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="RATED"
+        android:text="@string/rated"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#000E87"
@@ -83,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Plot ::"
+        android:text="@string/plott"
         android:textAlignment="center"
         android:textColor="#000E87"
         android:textSize="20sp" />
@@ -92,7 +91,7 @@
         android:id="@+id/moviePlotTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="plot"
+        android:text="@string/plot"
         android:textColor="#000000"
         android:textSize="14sp" />
 
@@ -101,7 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Actors ::"
+        android:text="@string/actors"
         android:textAlignment="center"
         android:textColor="#000E87"
         android:textSize="20sp" />
@@ -110,7 +109,7 @@
         android:id="@+id/movieActorsTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Actors"
+        android:text="@string/actorss"
         android:textSize="14sp" />
 
     <LinearLayout
@@ -124,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-black"
-            android:text="Rating"
+            android:text="@string/rating"
             android:textAlignment="center"
             android:textColor="#000E87"
             android:textSize="20sp" />
@@ -135,7 +134,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="sans-serif-black"
-            android:text="Runtime"
+            android:text="@string/runtime"
             android:textAlignment="center"
             android:textColor="#000E87"
             android:textSize="20sp" />

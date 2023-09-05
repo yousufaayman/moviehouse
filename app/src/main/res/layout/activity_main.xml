@@ -8,33 +8,116 @@
     android:background="#000522"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movieRV"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="#00FFFFFF"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bannerIV" />
-
     <ImageView
         android:id="@+id/bannerIV"
-        android:layout_width="401dp"
-        android:layout_height="190dp"
-        android:adjustViewBounds="false"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         android:background="#009C0000"
+        android:contentDescription="@string/banner_image_for_application"
         android:cropToPadding="false"
         android:foregroundGravity="fill_horizontal|fill"
         android:foregroundTint="#00000000"
         android:foregroundTintMode="add"
         android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ic_banner_background"
         tools:srcCompat="@mipmap/ic_banner_background" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movieRV"
+        android:layout_width="409dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#6750A3"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/movieRV"
+        app:layout_constraintEnd_toEndOf="@+id/movieRV"
+        app:layout_constraintStart_toStartOf="@+id/movieRV"
+        app:layout_constraintTop_toBottomOf="@+id/bannerIV"
+        tools:ignore="VisualLintBounds">
+
+        <Button
+            android:id="@+id/buttonTredning"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="serif-monospace"
+            android:insetLeft="20dp"
+            android:insetTop="10dp"
+            android:insetRight="10dp"
+            android:insetBottom="10dp"
+            android:rotationX="0"
+            android:text="@string/trending"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#6750A3"
+            android:textColorLink="#00CBF0"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:typeface="monospace"
+            android:visibility="visible"
+            app:rippleColor="#00B7FF" />
+
+        <Button
+            android:id="@+id/buttonTopRated"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif-monospace"
+            android:insetLeft="10dp"
+            android:insetTop="10dp"
+            android:insetRight="20dp"
+            android:insetBottom="10dp"
+            android:rotationX="4"
+            android:text="@string/top_rated"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#6750A3"
+            android:textColorLink="#00CBF0"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:typeface="monospace"
+            android:visibility="visible"
+            app:backgroundTint="#FFFFFF"
+            app:rippleColor="#00B7FF" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabScrollToTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/movieRV"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/arrow_up_float" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
