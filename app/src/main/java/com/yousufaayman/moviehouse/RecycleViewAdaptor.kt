@@ -79,11 +79,19 @@ class RecycleViewAdaptor(private val fragmentManager: FragmentManager, private v
                             }
                         }
                     } else {
-                        Log.e("FetchDataError", "Error fetching movie data")
+                        Toast.makeText(
+                            dContext,
+                            "API ERROR: Sorry Cannot Find Movie Information",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
                 override fun onFailure(call: Call<OMDBMovieModelClass>, t: Throwable) {
-                    Log.e("FetchDataError", "API Fail")
+                    Toast.makeText(
+                        dContext,
+                        "API ERROR: Please Restart Application and Check Internet Connection",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
         }

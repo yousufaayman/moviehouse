@@ -82,11 +82,13 @@ class MainActivity : AppCompatActivity() {
                             RecycleViewAdapt.submitList(movies)
                         } else {
                             Log.e("API ERROR", "Couldn't Complete Request")
+                            finishAffinity()
                         }
                     }
 
                     override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                         Log.e("API Request Failed", t.message ?: "Unknown error")
+                        finishAffinity()
                     }
                 })
             }
@@ -98,12 +100,13 @@ class MainActivity : AppCompatActivity() {
                             val movies = movieResponse?.results ?: emptyList()
                             RecycleViewAdapt.submitList(movies)
                         } else {
-                            Log.e("API ERROR", "Couldn't Complete Request")
+                            finishAffinity()
                         }
                     }
 
                     override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                         Log.e("API Request Failed", t.message ?: "Unknown error")
+                        finishAffinity()
                     }
                 })
             }
